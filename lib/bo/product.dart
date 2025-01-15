@@ -18,6 +18,19 @@ class Product {
 
   String getprice() => "${price.toStringAsFixed(2)}€";
 
+  String getDiscountedPrice(double discount) {
+    final discountedPrice = price - (price * discount);
+    return "${discountedPrice.toStringAsFixed(2)}€";
+  }
+
+  String getShippingCost(double totalPrice, double freeShippingThreshold) {
+    if (totalPrice >= freeShippingThreshold) {
+      return "Gratuit";
+    } else {
+      return "5.00€";
+    }
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
